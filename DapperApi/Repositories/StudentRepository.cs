@@ -62,7 +62,6 @@ public class StudentRepository : IStudentRepository
     public IEnumerable<Student> SearchByName(string name)
     {
         using var db = NewConnection();
-        // SQL Server dùng toán tử '+' để nối chuỗi
         return db.Query<Student>(
             "SELECT * FROM Students WHERE Name LIKE '%' + @Name + '%'", 
             new { Name = name });
